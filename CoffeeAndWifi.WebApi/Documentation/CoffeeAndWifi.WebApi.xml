@@ -4,6 +4,51 @@
         <name>CoffeeAndWifi.WebApi</name>
     </assembly>
     <members>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.AuthController.#ctor(CoffeeAndWifi.WebApi.Models.UnitOfWork,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="unitOfWork"> UnitOfWork </param>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.AuthController.Register(CoffeeAndWifi.WebApi.Models.Dtos.UserDto)">
+            <summary>
+            Register User
+            </summary>
+            <param name="userDtoRequest"> UserDto </param>
+            <returns>string UserName</returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.AuthController.Login(CoffeeAndWifi.WebApi.Models.Dtos.UserDto)">
+            <summary>
+            Login standard User
+            </summary>
+            <param name="userDtoRequest"> UserDto - userName and password</param>
+            <returns>string UserName </returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.AuthController.AdminLogin(CoffeeAndWifi.WebApi.Models.Dtos.UserDto)">
+            <summary>
+            Login as Admin
+            </summary>
+            <param name="userDtoRequest"> UserDto - userName and password</param>
+            <returns>string Admin userName </returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.AuthController.Delete(System.Int32)">
+            <summary>
+            Delete USer
+            </summary>
+            <param name="id"> int User.Id</param>
+            <returns></returns>
+        </member>
+        <member name="T:CoffeeAndWifi.WebApi.Controllers.CafeController">
+            <summary>
+            Cafe Controller
+            </summary>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.#ctor(CoffeeAndWifi.WebApi.Models.UnitOfWork)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="unitOfWork"> UnitOfWork </param>
+        </member>
         <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Get">
             <summary>
             Get All Cafes
@@ -16,6 +61,13 @@
             </summary>
             <param name="id"> int Cafe.Id </param>
             <returns> DataResponse - Cafe </returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Get(System.String)">
+            <summary>
+            Get Cafe by City
+            </summary>
+            <param name="city"> string Cafe.City </param>
+            <returns> DataResponse - IEnumerable CafeDto </returns>
         </member>
         <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Add(CoffeeAndWifi.WebApi.Models.Dtos.CafeDto)">
             <summary>
