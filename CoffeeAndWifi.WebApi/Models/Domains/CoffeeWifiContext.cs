@@ -87,8 +87,7 @@ public partial class CoffeeWifiContext : DbContext
         {
             entity.Property(e => e.UserRole)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("Role");
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -99,6 +98,11 @@ public partial class CoffeeWifiContext : DbContext
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Role).WithMany(p => p.Users)
+                .HasForeignKey(d => d.RoleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Users_Roles");
         });
 
         modelBuilder.Entity<WifiRating>(entity =>

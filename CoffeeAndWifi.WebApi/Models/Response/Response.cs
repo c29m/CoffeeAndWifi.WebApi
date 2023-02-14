@@ -1,4 +1,4 @@
-﻿namespace MyFinances.Models.Response
+﻿namespace CoffeeAndWifi.WebApi.Models.Response
 {
     public class Response
     {
