@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoffeeAndWifi.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Get">
+            <summary>
+            Get All Cafes
+            </summary>
+            <returns> DataResponse - IEnumerable CafeDto </returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Get(System.Int32)">
+            <summary>
+            Get Cafe by ID
+            </summary>
+            <param name="id"> int Cafe.Id </param>
+            <returns> DataResponse - Cafe </returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Add(CoffeeAndWifi.WebApi.Models.Dtos.CafeDto)">
+            <summary>
+            Add new Cafe
+            </summary>
+            <param name="cafeDto"> CafeDto </param>
+            <returns> DataResponse - Added Cafe Id </returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Update(CoffeeAndWifi.WebApi.Models.Dtos.CafeDto)">
+            <summary>
+            Update Cafe (PUT)
+            </summary>
+            <param name="cafeDto"> Cafe cafe </param>
+            <returns></returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.UpdatePatch(CoffeeAndWifi.WebApi.Models.Dtos.CafeDto)">
+            <summary>
+            Update Cafe (PATCH)
+            </summary>
+            <param name="cafeDto"> Cafe cafe </param>
+            <returns></returns>
+        </member>
+        <member name="M:CoffeeAndWifi.WebApi.Controllers.CafeController.Delete(System.Int32)">
+            <summary>
+            Delete Cafe 
+            </summary>
+            <param name="id"> int Id </param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
