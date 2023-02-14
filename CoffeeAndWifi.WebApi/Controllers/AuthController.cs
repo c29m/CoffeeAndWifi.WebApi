@@ -1,13 +1,9 @@
 ﻿using CoffeeAndWifi.WebApi.Models;
+using CoffeeAndWifi.WebApi.Models.Response;
 using CoffeeAndWifi.WebApi.Models.Converters;
-using CoffeeAndWifi.WebApi.Models.Domains;
 using CoffeeAndWifi.WebApi.Models.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using MyFinances.Models.Response;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace CoffeeAndWifi.WebApi.Controllers
 {
@@ -64,12 +60,13 @@ namespace CoffeeAndWifi.WebApi.Controllers
         public DataResponse<string> Login(UserDto userDtoRequest)
         {
             var response = new DataResponse<string>();
-            try
+            try  
             {
                 userDtoRequest.RoleId = 1;
                 _unitOfWork.User.Verify(userDtoRequest);
                 response.Data = userDtoRequest.Username;
-                response.Jwt = CreateToken(userDtoRequest.ToDao());
+                var role = _unitOfWork.Role.GetRole(userDtoRequest.RoleId);
+                response.Jwt = _unitOfWork.User.CreateToken(userDtoRequest.ToDao(), role);
             }
             catch (Exception exception)
             {
@@ -89,10 +86,11 @@ namespace CoffeeAndWifi.WebApi.Controllers
             var response = new DataResponse<string>();
             try
             {
-                userDtoRequest.RoleId = 2;
+                userDtoRequest.RoleId = 3;
                 _unitOfWork.User.Verify(userDtoRequest);
                 response.Data = userDtoRequest.Username;
-                response.Jwt = CreateToken(userDtoRequest.ToDao());
+                var role = _unitOfWork.Role.GetRole(userDtoRequest.RoleId);
+                response.Jwt = _unitOfWork.User.CreateToken(userDtoRequest.ToDao(), role);
             }
             catch (Exception exception)
             {
@@ -101,35 +99,13 @@ namespace CoffeeAndWifi.WebApi.Controllers
             return response;
         }
 
-        private string CreateToken(User user)
-        {
-            List<Claim> claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Username)
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value!));
-
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-            var token = new JwtSecurityToken(
-                    claims: claims,
-                    expires: DateTime.Now.AddDays(1),
-                    signingCredentials: credentials
-                );
-
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return jwt;
-
-        }
-
         /// <summary>
         /// Delete USer
         /// </summary>
         /// <param name="id"> int User.Id</param>
         /// <returns></returns>
         [HttpDelete("Delete/{id}")]
+        [Authorize(Roles = "Admin")]
         public Response Delete(int id)
         {
             var response = new Response();

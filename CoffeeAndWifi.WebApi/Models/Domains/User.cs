@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace CoffeeAndWifi.WebApi.Models.Domains;
 
-namespace CoffeeAndWifi.WebApi.Models.Domains;
-
-public class User
+public partial class User
 {
     public int Id { get; set; }
 
@@ -11,5 +8,7 @@ public class User
 
     public string PasswordHash { get; set; } = null!;
 
-    public int RoleId { get; set; } = 1;
+    public int RoleId { get; set; }
+
+    public virtual Role Role { get; set; } = null!;
 }

@@ -1,9 +1,9 @@
 ﻿using CoffeeAndWifi.WebApi.Models;
+using CoffeeAndWifi.WebApi.Models.Response;
 using CoffeeAndWifi.WebApi.Models.Converters;
 using CoffeeAndWifi.WebApi.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyFinances.Models.Response;
 
 //dodać autentykację,  obsługę userów z JWT
 
@@ -33,7 +33,6 @@ namespace CoffeeAndWifi.WebApi.Controllers
         /// </summary>
         /// <returns> DataResponse - IEnumerable CafeDto </returns>
         [HttpGet("GetAll")]
-        [AllowAnonymous]
         public DataResponse<IEnumerable<CafeDto>> Get()
         {
             var response = new DataResponse<IEnumerable<CafeDto>>();
@@ -54,7 +53,6 @@ namespace CoffeeAndWifi.WebApi.Controllers
         /// <param name="id"> int Cafe.Id </param>
         /// <returns> DataResponse - Cafe </returns>
         [HttpGet("GetCafe/{id}")]
-        [AllowAnonymous]
         public DataResponse<CafeDto> Get(int id)
         {
             var response = new DataResponse<CafeDto>();
@@ -75,7 +73,6 @@ namespace CoffeeAndWifi.WebApi.Controllers
         /// <param name="city"> string Cafe.City </param>
         /// <returns> DataResponse - IEnumerable CafeDto </returns>
         [HttpGet("GetCafes/{city}")]
-        [AllowAnonymous]
         public DataResponse<IEnumerable<CafeDto>> Get(string city)
         {
             var response = new DataResponse<IEnumerable<CafeDto>>();
@@ -95,7 +92,7 @@ namespace CoffeeAndWifi.WebApi.Controllers
         /// </summary>
         /// <param name="cafeDto"> CafeDto </param>
         /// <returns> DataResponse - Added Cafe Id </returns>
-        [HttpPost("Add")]
+        [HttpPost("Add"), Authorize(Roles = "User")]
         public DataResponse<int> Add(CafeDto cafeDto)
         {
             var response = new DataResponse<int>();
@@ -118,7 +115,7 @@ namespace CoffeeAndWifi.WebApi.Controllers
         /// </summary>
         /// <param name="cafeDto"> Cafe cafe </param>
         /// <returns></returns>
-        [HttpPut("Update")]
+        [HttpPut("Update"), Authorize(Roles = "User")]
         public Response Update(CafeDto cafeDto)
         {
             var response = new Response();
@@ -139,7 +136,7 @@ namespace CoffeeAndWifi.WebApi.Controllers
         /// </summary>
         /// <param name="cafeDto"> Cafe cafe </param>
         /// <returns></returns>
-        [HttpPatch("UpdateValue")]
+        [HttpPatch("UpdateValue"), Authorize(Roles = "Admin")]
         public Response UpdatePatch(CafeDto cafeDto)
         {
             var response = new Response();
@@ -160,8 +157,7 @@ namespace CoffeeAndWifi.WebApi.Controllers
         /// </summary>
         /// <param name="id"> int Id </param>
         /// <returns></returns>
-        [HttpDelete("Delete/{id}")]
-        
+        [HttpDelete("Delete/{id}"), Authorize(Roles = "Admin")]
         public Response Delete(int id)
         {
             var response = new Response();
@@ -176,6 +172,5 @@ namespace CoffeeAndWifi.WebApi.Controllers
             }
             return response;
         }
-
     }
 }
