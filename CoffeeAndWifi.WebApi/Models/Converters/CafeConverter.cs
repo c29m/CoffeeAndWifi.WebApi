@@ -20,6 +20,10 @@ namespace CoffeeAndWifi.WebApi.Models.Converters
                 Street = model.Street,
                 City = model.City,
                 PostalCode = model.PostalCode,
+                CoffeeRating = model.CoffeeRating.Rating!.ToString(),
+                WifiRating = model.WifiStrengthRating.Rating!.ToString(),
+                PwrSocketRating = model.PowerSocketsRating.Rating!.ToString()
+
             };
         }
 
@@ -27,7 +31,6 @@ namespace CoffeeAndWifi.WebApi.Models.Converters
         {
             if (model == null)
                 return Enumerable.Empty<CafeDto>();
-
             return model.Select(x => x.ToDto());
         }
 

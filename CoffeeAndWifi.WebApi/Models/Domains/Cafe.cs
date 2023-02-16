@@ -21,11 +21,11 @@ public partial class Cafe
 
     public string LocationUrl { get; set; } = null!;
 
-    public string? Street { get; set; }
+    public string Street { get; set; } = null!;
 
-    public string? City { get; set; }
+    public string City { get; set; } = null!;
 
-    public string? PostalCode { get; set; }
+    public string PostalCode { get; set; } = null!;
 
     public virtual CoffeeRating CoffeeRating { get; set; } = null!;
 
