@@ -21,6 +21,7 @@ namespace CoffeeAndWifi.WebApi.Models
         public UserRepository User { get; }
         public RoleRepository Role { get; }
 
+
         public void Complete()
         {
             _context.SaveChanges();
