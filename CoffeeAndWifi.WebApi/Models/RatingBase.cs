@@ -8,6 +8,4 @@ namespace CoffeeAndWifi.WebApi.Models
         public string? Rating { get; set; }
         public virtual ICollection<Cafe>? Cafes { get; }// = new List<Cafe>();
     }
-
-
 }
