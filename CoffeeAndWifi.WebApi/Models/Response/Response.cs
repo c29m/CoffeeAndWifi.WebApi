@@ -10,7 +10,7 @@
         public bool IsSuccess => Errors == null || !Errors.Any();
 
         public List<Error> Errors { get; set; }
-        public string Jwt { get; set; }
+        public string Jwt { get; set; } = null!;
 
     }
 }
