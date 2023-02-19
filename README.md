@@ -1,4 +1,4 @@
-# CoffeeAndWifi.WebApi - _Web.API ASP.NET Core_
+# CoffeeAndWifi - _Web.API ASP.NET Core_
 
 ## Opis
 - Aplikacja oparta na bazie danych MS SQL
