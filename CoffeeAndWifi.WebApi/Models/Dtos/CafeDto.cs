@@ -19,9 +19,12 @@ namespace CoffeeAndWifi.WebApi.Models.Dtos
         public int PowerSocketsRatingId { get; set; }
 
         public string LocationUrl { get; set; } = null!;
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
         public string Street { get; set; } = null!;
         public string City { get; set; } = null!;
         public string PostalCode { get; set; } = null!;
+        public string Description { get; set; } = null!;
 
         public string? CoffeeRating { get; set; } = null;
         public string? WifiRating { get; set; } = null;

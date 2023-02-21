@@ -17,9 +17,12 @@ namespace CoffeeAndWifi.WebApi.Models.Converters
                 WifiStrengthRatingId = model.WifiStrengthRatingId,
                 PowerSocketsRatingId = model.PowerSocketsRatingId,
                 LocationUrl = model.LocationUrl,
+                Latitude = model.Latitude,
+                Longitude = model.Longitude,
                 Street = model.Street,
                 City = model.City,
                 PostalCode = model.PostalCode,
+                Description = model.Description,
                 CoffeeRating = model.CoffeeRating.Rating!.ToString(),
                 WifiRating = model.WifiStrengthRating.Rating!.ToString(),
                 PwrSocketRating = model.PowerSocketsRating.Rating!.ToString()
@@ -46,9 +49,12 @@ namespace CoffeeAndWifi.WebApi.Models.Converters
                 WifiStrengthRatingId = model.WifiStrengthRatingId,
                 PowerSocketsRatingId = model.PowerSocketsRatingId,
                 LocationUrl = model.LocationUrl,
+                Latitude = model.Latitude,
+                Longitude = model.Longitude,
                 Street = model.Street,
                 City = model.City,
                 PostalCode = model.PostalCode,
+                Description = model.Description,
             };
 
         }
