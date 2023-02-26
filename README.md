@@ -1,4 +1,6 @@
 # CoffeeAndWifi - _Web.API ASP.NET Core_
+[Zobacz demo aplikacji](https://coffeeandwifi.webapi.slajan.com.pl/swagger/index.html)
+
 
 ## Opis
 - Aplikacja oparta na bazie danych MS SQL
